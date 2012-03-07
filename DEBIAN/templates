@@ -1,0 +1,8 @@
+Template: bd808/env
+Type: string
+Default: dev
+Description: Deploy environment
+
+Template: bd808/toy/restart
+Type: boolean
+Description: Should services be restarted after configuration?

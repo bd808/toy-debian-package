@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Example maintainer script.
+#
+# May be called in the following ways:
+# new-config configure old-version
+#     Called when dpkg-precofigure is run and before postinst.
+#
+# old-preinst abort-upgrade new-version
+#
+#     Called during error handling of an upgrade that failed after
+#     unpacking the new package because the postrm upgrade action failed.
+#     The unpacked files may be partly from the new version or partly
+#     missing, so the script cannot rely on files included in the package.
+#     Package dependencies may not be available. Pre-dependencies will be
+#     at least unpacked following the same rules as above, except they may
+#     be only "Half-Installed" if an upgrade of the pre-dependency failed.
+
+set -e
+. /usr/share/debconf/confmodule
+
+db_input high bd808/env || true
+db_input high bd808/toy/restart || true
+db_go || true

@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# Example maintainer script.
+#
+# May be called in the following ways:
+# postinst configure most-recently-configured-version
+#
+#     The files contained in the package will be unpacked. All package
+#     dependencies will at least be unpacked. If there are no circular
+#     dependencies involved, all package dependencies will be configured. For
+#     behavior in the case of circular dependencies, see the discussion in
+#     Binary Dependencies - Depends, Recommends, Suggests, Enhances,
+#     Pre-Depends, Section 7.2.
+#
+# old-postinst abort-upgrade new-version
+# conflictor's-postinst abort-remove in-favour package new-version
+# postinst abort-remove
+# deconfigured's-postinst abort-deconfigure in-favour
+# failed-install-package version [removing conflicting-package version]
+#
+#     The files contained in the package will be unpacked. All package
+#     dependencies will at least be "Half-Installed" and will have previously
+#     been configured and not removed. However, dependencies may not be
+#     configured or even fully unpacked in some error situations.[47] The
+#     postinst should still attempt any actions for which its dependencies are
+#     required, since they will normally be available, but consider the
+#     correct error handling approach if those actions fail. Aborting the
+#     postinst action if commands or facilities from the package dependencies
+#     are not available is often the best approach.
+
+set -e
+. /usr/share/debconf/confmodule
+mode=${1}
+
+echo postinst is being run at $0 with args "$*"
+echo pwd is $(pwd)
+echo env is
+env|grep DPKG_

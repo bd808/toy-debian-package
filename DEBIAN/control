@@ -1,0 +1,8 @@
+Package: toy-package
+Version: 0.3-5
+Section: base
+Priority: optional
+Architecture: all
+Depends: bash
+Maintainer: bd808@bd808.com
+Description: Learning how to make "simple" deb packages

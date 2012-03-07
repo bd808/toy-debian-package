@@ -1,0 +1,5 @@
+This is a toy example of making a debian package.
+
+This is mostly an exercize in understanding maintainer scripts.
+
+http://www.debian.org/doc/debian-policy/ch-maintainerscripts.html
